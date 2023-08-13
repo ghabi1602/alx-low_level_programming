@@ -14,9 +14,7 @@ int main(void)
 	while (c < 123)
 	{
 		if (c != 101 && c != 113)
-			{
-				putchar(c);
-			}
+			putchar(c);
 		c++;
 	}
 	putchar(10);
