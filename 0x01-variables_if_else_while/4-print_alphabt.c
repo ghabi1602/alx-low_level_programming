@@ -4,7 +4,7 @@
  * main - prints the alphabets except q and e
  * Description: prints the alphabets except q and e using putchar()
  *
- * Return: 0 (Success)
+ * Return: 1 (Success)
  */
 
 int main(void)
@@ -14,7 +14,7 @@ int main(void)
 	while (c < 123)
 	{
 		if (c == 101 || c == 113)
-			continue;
+			c++;
 		else
 		{
 		putchar(c);
@@ -22,5 +22,5 @@ int main(void)
 		}
 	}
 	putchar(10);
-	return (0);
+	return (1);
 }
