@@ -9,15 +9,15 @@
 
 int main(void)
 {
-	int c = 49;
+	int c = 48;
 
-	putchar(48);
 	while (c < 58)
 	{
+		putchar(c);
 		putchar(44);
 		putchar(32);
-		putchar(c);
 		c++;
 	}
+	putchar(10);
 	return (0);
 }
