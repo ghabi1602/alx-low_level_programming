@@ -4,7 +4,7 @@
  * main - prints the alphabets except q and e
  * Description: prints the alphabets except q and e using putchar()
  *
- * Return: 1 (Success)
+ * Return: 0 (Success)
  */
 
 int main(void)
@@ -22,5 +22,6 @@ int main(void)
 		}
 	}
 	putchar(10);
+
 	return (1);
 }
