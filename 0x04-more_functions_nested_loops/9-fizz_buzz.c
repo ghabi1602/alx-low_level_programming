@@ -3,8 +3,7 @@
 
 /**
  * main - print with Fizz and Buzz
- * Description: Print but change the multiple of 5\
- * with Buzz and 3 multiples with Fizz
+ * Description: Print but change the multiple with Fizz and Buzz
  *
  * Return: 0
  */
