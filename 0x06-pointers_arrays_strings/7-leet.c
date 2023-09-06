@@ -11,7 +11,7 @@ char *leet(char *s)
 {
         char aa[] = "aeotl";
 	char bb[] = "AEOTL";
-	char cc[] = "43701";
+	char cc[] = "43071";
 	int i = 0;
 	int j;
 
