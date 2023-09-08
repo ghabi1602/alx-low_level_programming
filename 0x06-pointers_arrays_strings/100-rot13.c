@@ -16,15 +16,16 @@ char *rot13(char *s)
 	while (s[i] != '\0')
 	{
 		j = 0;
-		while ((j < 26) && ((s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123)))
+		while ((aa[j] != '\0') && (
+		(s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123)))
 		{
 			if (s[i] == aa[j])
 			{
-				s[i] += bb[j];
+				s[i] += 13;
 			}
-			else
+			else if (s[i] == bb[j])
 			{
-				s[i] -= aa[j];
+				s[i] -= 13;
 			}
 			j++;
 		}
