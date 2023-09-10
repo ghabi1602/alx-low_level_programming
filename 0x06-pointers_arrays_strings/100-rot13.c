@@ -23,7 +23,7 @@ char *rot13(char *s)
 			{
 				s[i] += 13;
 			}
-			else if (s[i] == bb[j])
+			else
 			{
 				s[i] -= 13;
 			}
