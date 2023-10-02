@@ -10,6 +10,8 @@
 int main(int argc, char *argv[])
 {
 	int n, m;
+
+
 	if (argc == 3)
 	{
 		n = atoi(argv[1]);
