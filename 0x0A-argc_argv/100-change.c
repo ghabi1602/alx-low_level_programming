@@ -10,38 +10,38 @@ int check_change(int x, int coin);
  */
 int main(int argc, char *argv[])
 {
-	int n, a, b, c, d, e;
+	int cents, a, b, c, d, e;
 
 
-	if ((argc - 1) != 1)
+	if (argc == 1 || argc > 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	n = atoi(argv[1]);
+	cents = atoi(argv[1]);
 
-	if (n < 0)
+	if (cents < 0)
 	{
 		printf("%d\n", 0);
 		return (0);
 	}
 
-	a = check_change(n, 25);
-	n = n - a * 25;
-	b = check_change(n, 10);
-	n -= b * 10;
-	c = check_change(n, 5);
-	n -= c * 5;
-	d = check_change(n, 2);
-	n -= d * 2;
-	e = check_change(n, 1);
-	n -= e;
+	a = check_change(cents, 25);
+	cents = cents - a * 25;
+	b = check_change(cents, 10);
+	cents -= b * 10;
+	c = check_change(cents, 5);
+	cents -= c * 5;
+	d = check_change(cents, 2);
+	cents -= d * 2;
+	e = check_change(cents, 1);
+	cents -= e;
 	printf("%d\n", a + b + c + d + e);
 	return (0);
 }
 
 /**
- * check_change - prints how many coin within n
+ * check_chagcc - prints how many coin within n
  * @x: int
  * @coin: int
  * Return: integer
