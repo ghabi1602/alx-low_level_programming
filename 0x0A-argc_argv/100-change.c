@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 }
 
 /**
- * check_chagcc - prints how many coin within n
+ * check_change - prints how many coin within n
  * @x: int
  * @coin: int
  * Return: integer
