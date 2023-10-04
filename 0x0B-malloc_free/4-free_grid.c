@@ -5,14 +5,14 @@
 /**
  * free_grid - frees a 2 dimentional array
  * @grid: 2 dimentioal array
- * @heigth: integer
+ * @height: integer
  * Return: void
  */
 void free_grid(int **grid, int height)
 {
 	int i;
 
-	for (i = 0; i < length; i++)
+	for (i = 0; i < height; i++)
 	{
 		free(grid[i]);
 	}
