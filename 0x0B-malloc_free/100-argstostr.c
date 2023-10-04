@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "main.h"
 
-int length(char *ch);
 /**
  * *argstostr - concatinates all the arguments of the program
  * @ac: number of arguments
@@ -36,31 +35,15 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	chlen = -1;
+	chlen = 0;
 	for (j = 0; j < ac; j++)
 	{
-		chlen++;
-		for (k = 0; k < length(*(av + j)); k++)
+		for (k = 0; av[j][k] != '\0'; k++, chlen++)
 		{
 			*(ss + chlen) = av[j][k];
-			chlen++;
 		}
 		*(ss + chlen) = '\n';
+		chlen++;
 	}
 	return (ss);
-}
-
-/**
- * length - returns the length of a string
- * @ch: string
- * Return: integer
- */
-int length(char *ch)
-{
-	int n;
-
-	n = 0;
-	while (*(ch + n) != '\0')
-		n++;
-	return (n);
 }
