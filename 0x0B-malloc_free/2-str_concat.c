@@ -11,7 +11,7 @@ char *copy(char *, char *, int);
 char *str_concat(char *s1, char *s2)
 {
 	int i, len1, len2, l1, l2;
-	char *s = "";;
+	char *s = "";
 
 	len1 = 0;
 	while (*(s1 + len1) != '\0')
