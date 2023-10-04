@@ -38,11 +38,7 @@ char *str_concat(char *s1, char *s2)
 			*(s + i) = *(s1 + l1);
 			l1++;
 		}
-		else if (i == len1 && len1 != 0)
-		{
-			*(s + i) = ' ';
-		}
-		else
+		else if (i >= len1)
 		{
 			*(s + i) = *(s2 + l2);
 			l2++;
