@@ -11,11 +11,11 @@ int convert(char *);
  */
 int main(int argc, char *argv[])
 {
-	int a, b, num1, num2, e, mul, i;
+	int a, b, num1, num2, mul, i, e, n;
 	char *s = "Error\n";
 
 
-	if (argc == 3)
+	if (argc > 2 && argc < 4)
 	{
 		a = check_int(argv[1]);
 		b = check_int(argv[2]);
@@ -25,18 +25,24 @@ int main(int argc, char *argv[])
 			num1 = convert(argv[1]);
 			num2 = convert(argv[2]);
 
+			mul = num1 * num2;
+
 			e = 0;
-			mul= num1 * num2;
+			n = mul;
 			while (mul != 0)
 			{
-				e = e * 10 + (mul % 10);
+				e *= 10;
+				e += (mul % 10);
 				mul /= 10;
-
 			}
 			while (e != 0)
 			{
-				_putchar(e % 10 + '0');
-				e /= 10;
+				_putchar((e % 10) + '0');
+				e = e / 10;
+			}
+			if ((n % 10) == 0)
+			{
+				_putchar(48);
 			}
 			_putchar('\n');
 			return (0);
@@ -93,6 +99,7 @@ int convert(char *s)
 	while (s[i] != '\0')
 	{
 		n = n * 10 + (s[i] - '0');
+		i++;
 	}
 	return (n);
 }
