@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 				_putchar(s[i]);
 				i++;
 			}
-			exit (98);
+			exit(98);
 		}
 	}
 	i = 0;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 		_putchar(s[i]);
 		i++;
 	}
-	exit (98);
+	exit(98);
 }
 /**
  * check_int - checks for an integer
@@ -79,8 +79,8 @@ int check_int(char *s)
 	{
 		if (s[i] < 48 || s[i] > 59)
 			return (0);
-		else
-			i++;
+
+		i++;
 	}
 	return (1);
 }
