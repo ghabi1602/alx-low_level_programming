@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *fill(char *s);
 /**
  * new_dog - creates a new dog
  * @name: dog's name
@@ -12,8 +13,8 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dogg;
-	char *d, *dd;
-	int i, j, m, n;
+	char *dog_name, *dog_owner;
+	int i, j;
 
 	i = 0;
 	while (name[i] != '\0')
@@ -24,6 +25,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dogg = malloc(sizeof(dog_t));
 	if (dogg == NULL)
 		return (NULL);
+
+	dog_name = fill(name);
+	dog_owner = fill(owner);
+	if (!dog_owner || !dog_name)
+	{
+		free(dogg);
+		return (NULL);
+	}
 	dogg->name = malloc(sizeof(char) * (i + 1));
 	if (dogg->name == NULL)
 	{
@@ -37,14 +46,30 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dogg);
 		return (NULL);
 	}
-	d = malloc(sizeof(char) * (i + 1));
-	dd = malloc(sizeof(char) * (j + 1));
-	for (m = 0; m < i; m++)
-		d[m] = name[m];
-	for (n = 0; n < j; n++)
-		dd[n] = owner[n];
-	dogg->name = d;
+	dogg->name = dog_name;
 	dogg->age = age;
-	dogg->owner = dd;
+	dogg->owner = dog_owner;
 	return (dogg);
+}
+/**
+ * fill - fills a string
+ * @s: string
+ * Return: pointer to a string
+ */
+char *fill(char *s)
+{
+	int len, i;
+	char *ch;
+
+	len = 0;
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+	ch = malloc(sizeof(char) * (len + 1));
+	if (!ch)
+		return (NULL);
+	for (i = 0; i < len; i++)
+		ch[i] = s[i];
+	return (ch);
 }
