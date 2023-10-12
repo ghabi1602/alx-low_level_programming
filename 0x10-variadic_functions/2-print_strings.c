@@ -24,9 +24,12 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		else
 			printf("%s", s);
 
-		if (separator && i < n - 1)
-			printf(", ");
+		if (i < i - 1)
+			if (separator)
+			{
+				printf("%s", separator);
+			}
 	}
-	va_end(args);
 	printf("\n");
+	va_end(args);
 }
