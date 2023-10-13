@@ -30,6 +30,7 @@ void print_all(const char *format, ...)
 	};
 
 	i = 0;
+	va_start(args, format);
 	while (format && format[i] != '\0')
 	{
 		j = 0;
