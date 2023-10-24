@@ -4,7 +4,7 @@
 /**
  * add_nodeint - add a node to the list
  * @n: integer to be added to the list
- * @h: the head of a list
+ * @head: the head of a list
  * Return: pointer to the new element added
  */
 listint_t *add_nodeint(listint_t **head, const int n)
