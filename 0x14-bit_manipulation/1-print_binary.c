@@ -20,11 +20,12 @@ void print_binary(unsigned long int n)
 		_putchar('1');
 		return;
 	}
-	i = -1;
+	i = 0;
 	while (n != 0)
 	{
-		s[i++] = ((n - (n >> 1) * 2) + '0');
+		s[i] = ((n - (n >> 1) * 2) + '0');
 		n = n >> 1;
+		i++;
 	}
 	j = i - 1;
 	while (j >= 0)
