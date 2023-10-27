@@ -8,31 +8,17 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int copy, len, count;
-	int bit;
+	unsigned int i;
 
 
 	if (n == 0 && index < 64)
 		return (0);
-	len = 0;
-	copy = n;
-	while (copy != 0)
-	{
-		len++;
-		copy /= 2;
-	}
 
-	if (index > len)
-		return (-1);
 
-	count = 0;
-	while (count < len)
+	for (i = 0; i <= 63; n >>= 1, i++)
 	{
-		bit = n % 2;
-		if (count == index)
-			return (bit);
-		count++;
-		n /= 2;
+		if (i == index)
+			return (n & 1);
 	}
 	return (-1);
 }
