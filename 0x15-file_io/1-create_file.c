@@ -9,39 +9,28 @@
 int create_file(const char *filename, char *text_content)
 {
 	int f;
+	int i, length;
 
 	if (!filename)
 		return (-1);
 
-	if (text_content == NULL)
-	{
-		f = open(filename, O_WRONLY);
-		if (!f)
-			return (-1);
-		chmod(filename, 600);
-		close(f);
-		return (1);
-	}
+	
+	f = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 600);
 
-	f = open(filename, O_RDONLY);
+	if (!f)
+		return (-1);
 
-	if (f != -1)
-	{
-		close(f);
-		f = open(filename, 'w');
-		if (!f)
-			return (-1);
-		close(f);
-		return (1);
-	}
-	else
-	{
-		close(f);
-		f = open(filename, 'w');
-		if (!f)
-			return (-1);
-		chmod(filename, 600);
-		close(f);
-		return (1);
-	}
+	if (!text_content)
+		text_content = "";
+
+	for (length = 0; text_content[length]; length++)
+		;
+
+	i = write(f, text_content, length);
+
+	if (i == -1)
+		return (-1);
+
+	close(f);
+	return (0);
 }
