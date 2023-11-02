@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	char buf[1024];
 	char *file_from = argv[1];
 	char *file_to = argv[2];
-	int f_from, f_to;
+	int f_from, f_to, i;
 	ssize_t bytes_read;
 
 	if (argc != 3)
@@ -40,15 +40,15 @@ int main(int argc, char *argv[])
 	if (f_from == -1)
 		error_exit(98, "Error: Can't read from file %s\n", file_from);
 
-	f_to = open(file_to, O_WRONLY | O_CREAT
-| O_TRUNC | S_IRUSR | S_IWUSR | S_IRGRP);
+	f_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR | S_IRGRP);
 	if (f_to == -1)
 	{
 		error_exit(99, "Error: Can't write to %s\n", file_to);
 	}
-	while ((bytes_read = read(f_from, buf, 1024)) > 0)
+	while ((bytes_read = read(f_from, buf, sizeof(buf))) > 0)
 	{
-		if (write(f_to, buf, bytes_read) == -1)
+		i = write(f_to, buf, bytes_read);
+		if (i == -1)
 			error_exit(99, "Error: Can't write to %s\n", file_to);
 	}
 	if (close(f_from) == -1)
