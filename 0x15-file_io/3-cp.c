@@ -1,20 +1,15 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdarg.h>
+
 /**
  * error_exit - exits with an error
  * @code: the code to exit with
  * @format: the text to print before exiting
  * Return: void
  */
-void error_exit(int code, const char *format, ...)
+void error_exit(int code, const char *format, char *arg)
 {
-	va_list args;
-
-	va_start(args, format);
-
-	dprintf(2, format, args);
-	va_end(args);
+	dprintf(STDERR_FILENO, format, arg);
 	exit(code);
 }
 /**
@@ -40,7 +35,7 @@ int main(int argc, char *argv[])
 	if (f_from == -1)
 		error_exit(98, "Error: Can't read from file %s\n", file_from);
 
-	f_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR | S_IRGRP);
+	f_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	if (f_to == -1)
 	{
 		error_exit(99, "Error: Can't write to %s\n", file_to);
@@ -52,11 +47,17 @@ int main(int argc, char *argv[])
 			error_exit(99, "Error: Can't write to %s\n", file_to);
 	}
 	if (close(f_from) == -1)
-		error_exit(100, "Error: Can't close fd %d\n", f_from);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_from);
+		exit(100);
+	}
 	if (bytes_read == -1)
 		error_exit(99, "Error: Can't write to %s\n", file_to);
 	if (close(f_to) == -1)
-		error_exit(100, "Error: Can't close fd %d\n", f_to);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_to);
+		exit(100);
+	}
 
 	return (0);
 }
