@@ -5,6 +5,7 @@
  * error_exit - exits with an error
  * @code: the code to exit with
  * @format: the text to print before exiting
+ * @arg: argument
  * Return: void
  */
 void error_exit(int code, const char *format, char *arg)
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
 	if (f_from == -1)
 		error_exit(98, "Error: Can't read from file %s\n", file_from);
 
-	f_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	f_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (f_to == -1)
 	{
 		error_exit(99, "Error: Can't write to %s\n", file_to);
