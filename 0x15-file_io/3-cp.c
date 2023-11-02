@@ -41,8 +41,12 @@ int main(int argc, char *argv[])
 	{
 		error_exit(99, "Error: Can't write to %s\n", file_to);
 	}
-	while ((bytes_read = read(f_from, buf, sizeof(buf))) > 0)
+	bytes_read = 1024;
+	while (bytes_read == 1024)
 	{
+		bytes_read = read(f_from, buf, 1024);
+		if (bytes_read == -1)
+			error_exit(99, "Error: Can't write to %s\n", file_to);
 		i = write(f_to, buf, bytes_read);
 		if (i == -1)
 			error_exit(99, "Error: Can't write to %s\n", file_to);
