@@ -5,15 +5,15 @@
  * @head: the header of the list
  * Return: void
  */
-void free_dlistint(dlistint_t **head)
+void free_dlistint(dlistint_t *head)
 {
 	dlistint_t *node;
 
-	node = *head;
+	node = head;
 	while (node != NULL)
 	{
 		node = node->next;
-		free(*head);
-		*head = node;
+		free(head);
+		head = node;
 	}
 }
