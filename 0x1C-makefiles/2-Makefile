@@ -1,0 +1,14 @@
+CC = gcc
+SRC = main.c school.c
+NAME = school
+
+convert_main: $(word 1, $(SRC))
+	$(CC) -c -o main.o $(word 1, $(SRC))
+
+convert_school: $(word 2, $(SRC))
+	$(CC) -c -o school.o $(word 2, $(SRC))
+
+OBJ = $(wildcard *.o)
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
